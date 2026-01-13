@@ -1,0 +1,190 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const photos = [
+  { src: "/images/building.jpg", alt: "Walnut Hill Square exterior", caption: "Exterior view of Walnut Hill Square" },
+  { src: "/images/kitchen.jpg", alt: "Kitchen with modern finishes", caption: "Spacious kitchen & living area" },
+  { src: "/images/fridge.jpg", alt: "Apartment interior", caption: "Renovated kitchen with appliances included" },
+  { src: "/images/shower.jpg", alt: "Shower", caption: "Updated bathroom with shower & tub" },
+  { src: "/images/windows.jpg", alt: "Windows", caption: "Natural lighting" },
+  { src: "/images/washer.jpg", alt: "Washer/Dryer", caption: "Washer & Dryer available in each unit" },
+
+];
+
+const videos = [
+  { src: "/videos/studio_video.mov", title: "1BR Walkthrough" },
+  { src: "/gallery/videos/amenities-1.mp4", title: "Amenities Highlights" },
+];
+---
+
+<Layout title="Gallery">
+  <!-- Heading -->
+  <section class="bg-cream py-10">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-semibold text-ink">Explore Walnut Hill Square</h1>
+
+      <div id="tabs" class="mt-8 inline-flex rounded-full border border-spruce/20 bg-white shadow-sm overflow-hidden">
+        <button data-tab="photos" class="px-6 py-3 text-sm md:text-base font-medium text-spruce bg-white">
+          Photos
+        </button>
+        <button data-tab="videos" class="px-6 py-3 text-sm md:text-base font-medium text-spruce/70 hover:text-spruce">
+          Videos
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panels -->
+  <section class="bg-cream pb-16">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <!-- PHOTOS PANEL -->
+      <div id="panel-photos" class="carousel-panel">
+        <div class="relative rounded-lg overflow-hidden shadow-md bg-white">
+          <div class="aspect-[16/9] w-full relative" data-viewport="photos">
+            {photos.map((p, i) => (
+              <figure class={`absolute inset-0 h-full w-full transition-opacity duration-700 ease-out ${i === 0 ? "opacity-100" : "opacity-0"}`} data-slide="photos">
+                <img src={p.src} alt={p.alt} class="h-full w-full object-cover" loading="lazy" />
+                <figcaption class="absolute bottom-0 w-full bg-black/40 text-white text-sm md:text-base py-2 text-center">{p.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <!-- Controls -->
+          <button class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow" data-prev="photos">‹</button>
+          <button class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow" data-next="photos">›</button>
+
+          <!-- Dots -->
+          <div class="absolute bottom-9 left-1/2 -translate-x-1/2 flex gap-2" data-dots="photos">
+            {photos.map((_, i) => (
+              <button aria-label={`Go to photo ${i + 1}`} class={`h-2.5 w-2.5 rounded-full ${i === 0 ? "bg-gold" : "bg-white/80"} ring-1 ring-spruce/20`}></button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEOS PANEL -->
+  <!-- VIDEOS PANEL -->
+  <div id="panel-videos" class="carousel-panel hidden">
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+      {[
+        { youtube: "XxExampleID1", title: "Studio Tour" },
+        { youtube: "eLo8xWxAcX4", title: "1 Bedroom Walkthrough" },
+        { youtube: "XxExampleID3", title: "Corner 1 Bedroom" },
+        { youtube: "XxExampleID4", title: "2 Bedroom Apartment" },
+      ].map((v) => (
+        <div class="flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="aspect-[16/9] w-full">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${v.youtube}?rel=0&modestbranding=1&autohide=1`}
+              title={v.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+              class="w-full h-full object-cover"
+            ></iframe>
+          </div>
+          <p class="text-center text-ink/80 text-sm md:text-base py-3">{v.title}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  </section>
+
+  <!-- Carousel Logic -->
+<script is:inline define:script>
+document.addEventListener("DOMContentLoaded", () => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timers = { photos: null, videos: null };
+  const intervalMs = 6000;
+
+  const panels = {
+    photos: document.getElementById('panel-photos'),
+    videos: document.getElementById('panel-videos'),
+  };
+  const tabs = document.querySelectorAll('[data-tab]');
+
+  const slides = (key) => [...document.querySelectorAll(`[data-slide="${key}"]`)];
+  const dotsEl = (key) => document.querySelector(`[data-dots="${key}"]`);
+  const viewport = (key) => document.querySelector(`[data-viewport="${key}"]`);
+
+  function setActiveIndex(key, next) {
+    const list = slides(key);
+    if (!list.length) return;
+    const total = list.length;
+    const current = list.findIndex(el => el.classList.contains('opacity-100'));
+    const idx = (next + total) % total;
+
+    list[current]?.classList.replace('opacity-100', 'opacity-0');
+    list[idx]?.classList.replace('opacity-0', 'opacity-100');
+
+    const dots = [...(dotsEl(key)?.children || [])];
+    dots.forEach((d, i) => {
+      d.classList.toggle('bg-gold', i === idx);
+      d.classList.toggle('bg-white/80', i !== idx);
+    });
+
+    list.forEach((el, i) => {
+      if (el.tagName === 'VIDEO') {
+        if (i === idx) el.play().catch(() => {});
+        else { el.pause(); el.currentTime = 0; }
+      }
+    });
+  }
+
+  const nextSlide = (key, step = 1) => {
+    const list = slides(key);
+    if (!list.length) return;
+    const current = list.findIndex(el => el.classList.contains('opacity-100'));
+    setActiveIndex(key, current + step);
+  };
+
+  const startAuto = (key) => {
+    stopAuto(key);
+    if (prefersReduced) return;
+    timers[key] = setInterval(() => nextSlide(key, 1), intervalMs);
+  };
+  const stopAuto = (key) => {
+    if (timers[key]) clearInterval(timers[key]);
+    timers[key] = null;
+  };
+
+  document.querySelectorAll('[data-prev]').forEach(btn =>
+    btn.addEventListener('click', () => nextSlide(btn.dataset.prev, -1))
+  );
+  document.querySelectorAll('[data-next]').forEach(btn =>
+    btn.addEventListener('click', () => nextSlide(btn.dataset.next, 1))
+  );
+
+  ['photos', 'videos'].forEach(key => {
+    const d = dotsEl(key);
+    if (d) [...d.children].forEach((dot, i) =>
+      dot.addEventListener('click', () => setActiveIndex(key, i))
+    );
+    const vp = viewport(key);
+    if (vp) {
+      vp.addEventListener('mouseenter', () => stopAuto(key));
+      vp.addEventListener('mouseleave', () => startAuto(key));
+    }
+  });
+
+  function showTab(key) {
+    Object.entries(panels).forEach(([k, el]) => el.classList.toggle('hidden', k !== key));
+    tabs.forEach(t => {
+      const on = t.dataset.tab === key;
+      t.classList.toggle('text-spruce', on);
+      t.classList.toggle('bg-white', on);
+      t.classList.toggle('text-spruce/70', !on);
+    });
+    startAuto(key);
+    stopAuto(key === 'photos' ? 'videos' : 'photos');
+  }
+
+  tabs.forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
+  showTab('photos');
+});
+</script>
+
+
+</Layout>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "studio",
+    "name": "Studio",
+    "beds": 0,
+    "baths": 1,
+    "sqft": 390,
+    "price": "$1,095",
+    "image": "/images/studio.png",
+    "features": ["Washer/Dryer Included", "Walk-In Closet", "Open layout", "Modern finishes"]
+    },
+  {
+    "id": "1b1b",
+    "name": "1 Bed / 1 Bath",
+    "beds": 1,
+    "baths": 1,
+    "sqft": 615,
+    "price": "$1,495",
+    "image": "/images/1b:1b.png",
+    "features": ["Washer/Dryer Included", "Spacious bedroom", "Open living area", "Modern finishes"]
+  },
+  {
+    "id": "corner-1b1b",
+    "name": "Corner 1 Bed / 1 Bath",
+    "beds": 1,
+    "baths": 1,
+    "sqft": 590,
+    "price": "$1,395",
+    "image": "/images/corner.png",
+    "features": ["Corner layout", "Great natural light", "Washer/Dryer Included", "Modern finishes"]
+  },
+  {
+    "id": "2b2b",
+    "name": "2 Bed / 2 Bath",
+    "beds": 2,
+    "baths": 2,
+    "sqft": 1090,
+    "price": "$2,100",
+    "image": "/images/2b:2b.png",
+    "features": ["Two full bathrooms", "Spacious living/dining", "Washer/Dryer Included", "Great storage"]
+  }
+]

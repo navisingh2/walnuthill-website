@@ -1,11 +1,112 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Walnut Hill Square Apartments">
+  <!-- HERO -->
+  <section
+    class="relative h-[72vh] md:h-[80vh] bg-center bg-cover flex items-end text-white"
+    style="background-image: url('/images/background.png');"
+  >
+    <div class="absolute inset-0 bg-overlay/40"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-16">
+      <h1 class="font-heading text-4xl md:text-6xl font-semibold leading-tight drop-shadow-sm">
+        Historic charm.<br/>Modern comfort.
+      </h1>
+      <p class="mt-4 max-w-2xl text-base md:text-lg text-white/90">
+        Apartments in Spruce Hill near UPenn and Drexel. Quiet, tree-lined streets, quick transit, and walkable cafés.
+      </p>
+      <a
+        href="/floor-plans"
+        class="mt-6 inline-block bg-gold text-white px-6 py-3 rounded-md font-medium no-underline hover:bg-gold2 transition"
+      >
+        View Floor Plans
+      </a>
+    </div>
+  </section>
+
+  <!-- AMENITIES & CONVENIENCES (with scroll reveal) -->
+  <section
+  class="bg-cream
+         [background-image:radial-gradient(#e3dccf_1px,transparent_1px)]
+         [background-size:14px_14px] [background-position:center]"
+>
+  <div class="max-w-7xl mx-auto px-4 py-16" data-reveal>   
+    <div class="grid md:grid-cols-2 gap-8 items-stretch">
+      <!-- Left images -->
+      <div class="grid gap-6" data-reveal-item>           
+        <img src="/images/pets.jpg" class="w-full rounded-md aspect-[20/10] object-cover" alt="" />
+        <img src="/images/storage-locker.jpeg" class="w-full rounded-md aspect-[16/10] object-cover" alt="" />
+      </div>
+
+      <!-- Right card -->
+      <div class="bg-white border border-slate-200 rounded-md shadow-sm p-8 flex items-center md:h-full" data-reveal-item> 
+        <div class="w-full text-center">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="flex-1 h-px bg-spruce/30"></span>
+            <h3 class="font-heading text-spruce tracking-[0.12em] text-xl md:text-2xl">AMENITIES & CONVENIENCES</h3>
+            <span class="flex-1 h-px bg-spruce/30"></span>
+          </div>
+          <div class="w-24 h-[2px] bg-gold mx-auto mb-6"></div>
+
+          <ul class="text-spruce/90 leading-relaxed flex flex-wrap justify-center text-[1rem]">
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">Parcelist Locker Solutions</li>
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">Bike Storage</li>
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">Elevator</li>
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">Washer/Dryer in Each Unit</li>
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">Pet Friendly</li>
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">Secure Entry</li>
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">UPenn Shuttle Accessible</li>
+            <li class="after:content-['·'] after:mx-3 last:after:content-none">Parking Space</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VISIT US -->
+<section class="bg-spruce text-white">
+  <div class="max-w-6xl mx-auto px-4 py-16" data-reveal>   
+    <h2 class="font-heading text-center text-3xl md:text-4xl font-semibold mb-10">
+      Visit Us
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <!-- Left: Leasing Office / Address / Hours -->
+      <div class="bg-spruce/20 border border-white/15 rounded-md p-8" data-reveal-item>  
+        <h3 class="font-heading tracking-[0.14em] text-xl md:text-2xl text-center">
+          LEASING OFFICE
+        </h3>
+        <div class="w-24 h-[2px] bg-gold mx-auto my-4"></div>
+
+        <div class="text-center space-y-2">
+          <p class="text-lg">4210 Sansom Street</p>
+          <p class="text-lg">Philadelphia, PA 19104</p>
+          <p class="text-md">Call us at 215.519.2045</p>
+        </div>
+
+        <h4 class="font-heading text-center text-xl mt-8 mb-3">Office Hours</h4>
+        <ul class="text-center space-y-1 leading-relaxed">
+          <li>Monday — Friday </li>
+          <li>8:00am - 5:00pm</li>
+        </ul>
+      </div>
+
+      <!-- Right: Google Map -->
+      <div class="rounded-md overflow-hidden shadow-sm min-h-[360px]" data-reveal-item>  
+        <iframe
+          class="w-full h-[360px] md:h-full"
+          style="min-height:360px; border:0;"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=4210+Sansom+Street,+Philadelphia,+PA+19104&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 </Layout>

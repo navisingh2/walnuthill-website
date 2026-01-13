@@ -1,0 +1,229 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact">
+  <!-- HEADER -->
+  <section class="bg-cream py-12 [background-image:radial-gradient(#e3dccf_1px,transparent_1px)] [background-size:14px_14px] [background-position:center]">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-semibold text-ink">Contact Us / Schedule a Visit</h1>
+      <p class="mt-4 max-w-2xl mx-auto text-ink/70">
+        We look forward to showing you our community.
+        A member of our team will follow up with you to coordinate and confirm your appointment.
+      </p>
+    </div>
+  </section>
+
+  <!-- CARD -->
+<section class="bg-cream pb-16 [background-image:radial-gradient(#e3dccf_1px,transparent_1px)] [background-size:14px_14px] [background-position:center]">
+<div class="max-w-[1400px] mx-auto px-8">
+    <div class="bg-white border border-spruce/20 shadow-sm rounded-lg p-6 md:p-10" data-reveal>
+      <div class="grid md:grid-cols-2 gap-10 items-stretch">
+        <!-- LEFT: FORM -->
+        <form
+          action="https://formspree.io/f/xyzndvrd"
+          method="POST"
+          class="grid gap-4"
+          data-reveal-item
+        >
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm mb-1 text-ink/70">First Name*</label>
+              <input class="w-full rounded-md border border-slate-200 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-spruce/30" type="text" name="firstName" required>
+            </div>
+            <div>
+              <label class="block text-sm mb-1 text-ink/70">Last Name*</label>
+              <input class="w-full rounded-md border border-slate-200 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-spruce/30" type="text" name="lastName" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm mb-1 text-ink/70">Email Address*</label>
+            <input class="w-full rounded-md border border-slate-200 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-spruce/30" type="email" name="email" required>
+          </div>
+
+          <div>
+            <label class="block text-sm mb-1 text-ink/70">Phone*</label>
+            <input class="w-full rounded-md border border-slate-200 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-spruce/30" type="tel" name="phone" required>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm mb-1 text-ink/70">Desired Move-In Date*</label>
+              <input class="w-full rounded-md border border-slate-200 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-spruce/30" type="date" name="moveIn" required>
+            </div>
+            <div>
+              <label class="block text-sm mb-1 text-ink/70">Interested In*</label>
+              <select class="w-full rounded-md border border-slate-200 px-3 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-spruce/30" name="interest" required>
+                <option value="">Select</option>
+                <option>Studio</option>
+                <option>1 Bed 1 Bath</option>
+                <option>Corner 1 Bed 1 Bath</option>
+                <option>2 Bed 2 Bath</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm mb-1 text-ink/70">Message*</label>
+            <textarea class="w-full rounded-md border border-slate-200 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-spruce/30" name="message" rows="4" placeholder="Tell us what you’re looking for" required></textarea>
+          </div>
+
+          <button class="mt-2 inline-flex items-center justify-center rounded-md bg-gold text-white px-5 py-3 font-medium hover:bg-gold2 transition">
+            Send Request
+          </button>
+        </form>
+
+        <!-- RIGHT: MAP -->
+        <div class="rounded-md overflow-hidden border border-slate-200 min-h-[460px]" data-reveal-item>
+          <iframe
+            class="w-full h-full min-h-[460px]"
+            style="border:0;"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=4210+Sansom+Street,+Philadelphia,+PA+19104&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-spruce text-white py-8">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+    <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gold text-spruce font-heading text-lg font-semibold">
+      PS
+    </div>
+    <div>
+      <h3 class="font-heading text-xl text-gold font-semibold">Paul Singh</h3>
+      <p class="text-white/80 text-sm md:text-base">Property Manager</p>
+      <p class="mt-1 text-white/80 text-sm md:text-base">
+        <a href="mailto:walnuthillsquare@gmail.com" class="underline hover:text-gold">walnuthillsquare@gmail.com</a> • 
+        <a href="tel:2155192045" class="underline hover:text-gold">(215) 519-2045</a>
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<script is:inline>
+(() => {
+  const form = document.querySelector('form[action]');
+  if (!form) return;
+
+  // Build one global banner (top-center, under header)
+  const banner = document.createElement('div');
+  banner.role = 'status';
+  banner.setAttribute('aria-live', 'polite');
+  banner.style.position = 'fixed';
+  banner.style.left = '50%';
+  banner.style.transform = 'translateX(-50%)';
+  banner.style.zIndex = '120';
+  banner.style.width = 'min(92vw, 800px)';
+  banner.style.pointerEvents = 'none';
+  banner.style.display = 'none';
+  document.body.appendChild(banner);
+
+  function positionBanner() {
+    const header = document.querySelector('header');
+    const top = (header?.offsetHeight || 64) + 12; // under sticky header
+    banner.style.top = `${top}px`;
+  }
+  positionBanner();
+  window.addEventListener('resize', positionBanner);
+  window.addEventListener('scroll', positionBanner);
+
+  function setBanner(ok, msg) {
+    banner.innerHTML = `
+      <div id="banner-card"
+           class="pointer-events-auto rounded-md shadow-lg border p-4
+                  bg-white text-spruce border-slate-200
+                  opacity-0 -translate-y-2 transition-all duration-300 ease-out
+                  mx-auto">
+        <div class="flex items-start gap-3">
+          <div class="${
+            ok
+              ? 'w-2 h-2 rounded-full bg-gold mt-2 shrink-0'
+              : 'w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0'
+          }"></div>
+          <div>
+            <div class="font-heading text-lg">
+              ${ok ? 'Thank you!' : 'Something went wrong'}
+            </div>
+            <div class="text-sm text-ink/80 mt-1">
+              ${msg || (ok
+                ? 'We received your request and will be in touch shortly.'
+                : 'Please try again in a moment.')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  let hideTimer;
+  function showBanner(ok, msg) {
+    clearTimeout(hideTimer);
+    setBanner(ok, msg);
+    positionBanner();
+    banner.style.display = 'block';
+    requestAnimationFrame(() => {
+      const card = banner.querySelector('#banner-card');
+      card.classList.remove('opacity-0', '-translate-y-2');
+    });
+    // Ensure user sees it
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    hideTimer = setTimeout(() => {
+      const card = banner.querySelector('#banner-card');
+      card.classList.add('opacity-0', '-translate-y-2');
+      setTimeout(() => (banner.style.display = 'none'), 300);
+    }, 5000);
+  }
+
+  const submitBtn =
+    form.querySelector('button[type="submit"], button:not([type])') ||
+    form.querySelector('button');
+  const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+      submitBtn.innerHTML = 'Sending…';
+    }
+    try {
+      const data = new FormData(form);
+      const action = form.getAttribute('action');
+      const res = await fetch(action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        showBanner(true);
+      } else {
+        let msg = 'Please try again.';
+        try {
+          const j = await res.json();
+          if (j?.errors?.[0]?.message) msg = j.errors[0].message;
+        } catch {}
+        showBanner(false, msg);
+      }
+    } catch {
+      showBanner(false, 'Network error. Check your connection.');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+        submitBtn.innerHTML = originalBtnHTML || 'Send Request';
+      }
+    }
+  });
+})();
+</script>
+
+
+</Layout>

@@ -1,0 +1,240 @@
+---
+import Base from "../layouts/Layout.astro";
+import plans from "../data/floorPlans.json";
+---
+
+<Base title="Floor Plans">
+  <!-- HERO SECTION -->
+  <section
+    class="relative h-[60vh] bg-center bg-cover flex items-center justify-center text-center text-white"
+    style="background-image: url('/images/front.jpeg');"
+  >
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 px-6">
+      <h1 class="text-5xl font-heading mb-4">Floor Plans</h1>
+      <p class="text-lg max-w-2xl mx-auto">
+        Choose from our thoughtfully designed layouts featuring open spaces, tall ceilings, and modern finishes.
+      </p>
+    </div>
+  </section>
+
+  <!-- FLOOR PLAN GRID -->
+  <section class="bg-[#f8f5f0] py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-center text-2xl font-heading text-spruce mb-2 tracking-wide">FLOOR PLANS</h2>
+      <div class="w-24 h-[2px] bg-gold mx-auto mb-8"></div>
+
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        {plans.map((plan) => (
+          <div class="bg-white border border-slate-200 p-6 rounded-md shadow-sm">
+          <h3 class="font-heading text-lg mb-2">{plan.name}</h3>
+
+          <p class="text-lg font-medium mb-4">{plan.price}</p>
+
+          <button
+            type="button"
+            class="text-spruce underline text-sm hover:text-gold"
+            data-open-modal
+            data-plan={JSON.stringify(plan)}
+          >
+            View Details
+          </button>
+        </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL (hidden by default) -->
+  <div
+    id="plan-modal"
+    class="fixed inset-0 z-50 hidden"
+    aria-hidden="true"
+  >
+    <!-- overlay -->
+    <div
+      id="plan-modal-overlay"
+      class="absolute inset-0 bg-black/60"
+    ></div>
+
+    <!-- modal panel -->
+    <div class="relative z-10 flex min-h-screen items-center justify-center p-4">
+      <div
+        class="w-full max-w-3xl rounded-lg bg-white shadow-xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="plan-modal-title"
+      >
+        <!-- header -->
+        <div class="flex items-start justify-between border-b border-slate-200 px-6 py-4">
+          <div>
+            <h3 id="plan-modal-title" class="font-heading text-2xl text-spruce">
+              <!-- filled by JS -->
+            </h3>
+            <p id="plan-modal-subtitle" class="text-sm text-slate-600 mt-1">
+              <!-- sqft / beds-baths -->
+            </p>
+          </div>
+
+          <button
+            type="button"
+            id="plan-modal-close"
+            class="text-slate-500 hover:text-slate-800 text-2xl leading-none"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <!-- content -->
+        <div class="grid md:grid-cols-2 gap-6 px-6 py-6">
+          <!-- image -->
+          <div class="rounded-md border border-slate-200 bg-slate-50 overflow-hidden">
+            <img
+              id="plan-modal-image"
+              src=""
+              alt=""
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- details -->
+          <div class="text-left">
+            <p class="text-lg font-medium mb-2" id="plan-modal-price"></p>
+
+            <div class="space-y-2 text-sm text-slate-700">
+              <div><span class="font-medium">Square Footage:</span> <span id="plan-modal-sqft"></span></div>
+              <div><span class="font-medium">Layout:</span> <span id="plan-modal-layout"></span></div>
+            </div>
+
+            <div class="mt-4">
+              <h4 class="font-heading text-base text-spruce mb-2">Highlights</h4>
+              <ul id="plan-modal-features" class="list-disc list-inside text-sm text-slate-700 space-y-1"></ul>
+            </div>
+
+            <div class="mt-6 flex flex-col gap-3">
+              <a
+                id="plan-modal-cta"
+                href="/contact"
+                class="inline-flex justify-center rounded-md bg-spruce px-4 py-2 text-white hover:opacity-90"
+              >
+                Contact Leasing
+              </a>
+              <p class="text-xs text-slate-500">
+                Pricing and availability are subject to change.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- footer (optional) -->
+        <div class="border-t border-slate-200 px-6 py-4 text-right">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL SCRIPT -->
+  <script>
+  const modal = document.getElementById("plan-modal");
+  const overlay = document.getElementById("plan-modal-overlay");
+  const closeBtn = document.getElementById("plan-modal-close");
+
+  const titleEl = document.getElementById("plan-modal-title");
+  const subtitleEl = document.getElementById("plan-modal-subtitle");
+  const imageEl = document.getElementById("plan-modal-image");
+  const priceEl = document.getElementById("plan-modal-price");
+  const sqftEl = document.getElementById("plan-modal-sqft");
+  const layoutEl = document.getElementById("plan-modal-layout");
+  const featuresEl = document.getElementById("plan-modal-features");
+  const ctaEl = document.getElementById("plan-modal-cta");
+
+  const openButtons = document.querySelectorAll("[data-open-modal]");
+
+  // ✅ Hard type narrowing that TypeScript understands (even in JS)
+  if (
+    !(modal instanceof HTMLElement) ||
+    !(overlay instanceof HTMLElement) ||
+    !(closeBtn instanceof HTMLElement) ||
+    !(titleEl instanceof HTMLElement) ||
+    !(subtitleEl instanceof HTMLElement) ||
+    !(imageEl instanceof HTMLImageElement) ||
+    !(priceEl instanceof HTMLElement) ||
+    !(sqftEl instanceof HTMLElement) ||
+    !(layoutEl instanceof HTMLElement) ||
+    !(featuresEl instanceof HTMLUListElement) ||
+    !(ctaEl instanceof HTMLAnchorElement)
+  ) {
+    console.warn("Modal elements missing or wrong type");
+  } else {
+    // ✅ From here on, TS knows the exact element types
+    function openModal(plan) {
+      titleEl.textContent = plan.name ?? "Floor Plan";
+      subtitleEl.textContent = "";
+
+      const beds = plan.beds;
+      const baths = plan.baths;
+
+      let bedsBaths = "";
+      if (beds === 0) bedsBaths = "Studio";
+      else if (beds != null && baths != null) bedsBaths = `${beds} Bed / ${baths} Bath`;
+
+      priceEl.textContent = plan.price ? `${plan.price} (starting)` : "";
+      sqftEl.textContent = plan.sqft ? `${plan.sqft} sq ft` : "—";
+
+      layoutEl.textContent = bedsBaths;
+      const layoutRow = layoutEl.closest("div");
+      if (layoutRow) layoutRow.style.display = bedsBaths ? "" : "none";
+
+      imageEl.src = plan.image || "/images/front.jpeg";
+      imageEl.alt = `${plan.name || "Floor plan"} image`;
+
+      featuresEl.innerHTML = "";
+      const features = Array.isArray(plan.features) ? plan.features : [];
+
+      if (features.length) {
+        features.forEach((f) => {
+          const li = document.createElement("li");
+          li.textContent = f;
+          featuresEl.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.textContent = "Please contact leasing for full details and current availability.";
+        featuresEl.appendChild(li);
+      }
+
+      const qp = plan.name ? `?plan=${encodeURIComponent(plan.name)}` : "";
+      ctaEl.href = `/contact${qp}`;
+
+      modal.classList.remove("hidden");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.add("hidden");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    openButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const raw = btn.getAttribute("data-plan");
+        if (!raw) return;
+        openModal(JSON.parse(raw));
+      });
+    });
+
+    overlay.addEventListener("click", closeModal);
+    closeBtn.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+    });
+  }
+</script>
+
+</Base>

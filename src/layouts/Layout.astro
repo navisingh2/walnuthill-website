@@ -9,6 +9,29 @@ const { title = "Walnut Hill Square Apartments" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/walnut-hill-logo.png" />
+    <link rel="apple-touch-icon" href="/walnut-hill-logo.png" />
+    <meta property="og:image" content="https://walnuthillsquare.com/og-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ApartmentComplex",
+      "name": "Walnut Hill Square Apartments",
+      "url": "https://walnuthillsquare.com/",
+      "image": "https://walnuthillsquare.com/og-logo.png",
+      "logo": "https://walnuthillsquare.com/walnut-hill-logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4210 Sansom Street",
+        "addressLocality": "Philadelphia",
+        "addressRegion": "PA",
+        "postalCode": "19104",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <title>{title}</title>
   </head>

@@ -1,0 +1,342 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Apply Now">
+
+  <!-- ─── HERO ─── -->
+  <section class="bg-spruce text-white py-16 md:py-20 px-4 text-center">
+    <h1 class="font-heading text-4xl md:text-5xl mb-3">Apply for an Apartment</h1>
+    <p class="text-white/80 text-lg max-w-xl mx-auto leading-relaxed">
+      Download our rental application, complete it, and bring it to our leasing office with the application fee.
+    </p>
+  </section>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <div class="apply-content">
+
+    <!-- Download Card -->
+    <div class="download-card">
+      <div class="pdf-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+      <h2 class="font-heading text-2xl mb-2">Rental Application</h2>
+      <p class="download-sub">PA Association of Realtors® standard form. Print it out, fill it in, and bring it to our office.</p>
+      <a href="/rental-application.pdf" download class="download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download Application (PDF)
+      </a>
+      <p class="file-info">PDF · 4 pages</p>
+    </div>
+
+    <!-- How to Apply Steps -->
+    <div class="steps-section">
+      <h2 class="font-heading text-2xl mb-6 text-center">How to Apply</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3 class="font-heading text-lg mb-1">Download & Print</h3>
+          <p>Download the rental application above and print all 4 pages. Fill out every section completely.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3 class="font-heading text-lg mb-1">Prepare Your Fee</h3>
+          <p>The application fee is <strong>$50</strong> per applicant, payable by cash or check. Non-refundable.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3 class="font-heading text-lg mb-1">Drop Off in Person</h3>
+          <p>Bring your completed application, fee, and a valid photo ID to our leasing office during business hours.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fee Callout -->
+    <div class="fee-callout">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fee-icon">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <p><strong>Application fee: $50 per applicant.</strong> Cash or check only. Each co-applicant or co-signer must submit a separate application with their own fee. The fee is non-refundable and will not be applied toward rent.</p>
+    </div>
+
+    <!-- Drop-off & Hours -->
+    <div class="info-row">
+      <div class="info-card">
+        <h3 class="font-heading text-lg mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Drop-off Location
+        </h3>
+        <p class="info-label">Walnut Hill Square Leasing Office</p>
+        <p class="info-text">4210 Sansom Street<br />Philadelphia, PA 19104</p>
+        <p class="info-link">
+          <a href="https://maps.google.com/?q=4210+Sansom+Street+Philadelphia+PA+19104" target="_blank" rel="noopener">Get Directions →</a>
+        </p>
+      </div>
+      <div class="info-card">
+        <h3 class="font-heading text-lg mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Office Hours
+        </h3>
+        <p class="info-label">Monday — Friday</p>
+        <p class="info-text">8:00 AM – 5:00 PM</p>
+        <p class="info-small">Closed weekends and major holidays.<br />Please call ahead to confirm availability.</p>
+      </div>
+    </div>
+
+    <!-- What to Bring -->
+    <div class="info-card bring-card">
+      <h3 class="font-heading text-lg mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+        </svg>
+        What to Bring
+      </h3>
+      <p class="info-text">When you visit the leasing office, please have the following ready:</p>
+      <p class="checklist">
+        ✓ &nbsp;Completed rental application (all 4 pages)<br />
+        ✓ &nbsp;$50 application fee (cash or check)<br />
+        ✓ &nbsp;Valid government-issued photo ID<br />
+        ✓ &nbsp;Proof of income (recent pay stubs or employment letter)
+      </p>
+    </div>
+
+    <!-- Questions CTA -->
+    <div class="questions-card">
+      <h2 class="font-heading text-2xl mb-2">Have Questions?</h2>
+      <p class="questions-sub">Our property manager Paul is happy to help. Reach out anytime.</p>
+      <div class="contact-links">
+        <a href="tel:2155192045" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          (215) 519-2045
+        </a>
+        <a href="mailto:walnuthillsquare@gmail.com" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          walnuthillsquare@gmail.com
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+  /*
+    Colors from tailwind.config.cjs:
+    spruce: #0F4C3A   cream: #F2EEE7   gold: #B08A3F
+    gold2:  #9C7A33   ink:   #1C1C1C
+  */
+
+  .apply-content {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    width: 100%;
+  }
+
+  /* ── Download Card ── */
+  .download-card {
+    background: #fff;
+    border: 1px solid #e5e1da;
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .pdf-icon {
+    width: 68px; height: 68px;
+    background: #fdf2f2;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .download-sub {
+    color: #6b6b6b;
+    font-size: 0.95rem;
+    max-width: 420px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.6;
+  }
+  .download-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: #B08A3F;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .download-btn:hover { background: #9C7A33; }
+  .file-info {
+    font-size: 0.8rem;
+    color: #6b6b6b;
+    margin-top: 0.75rem;
+  }
+
+  /* ── Steps ── */
+  .steps-section { margin-bottom: 2rem; }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .steps-grid { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  .step-card {
+    background: #fff;
+    border: 1px solid #e5e1da;
+    border-radius: 12px;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+  .step-num {
+    width: 40px; height: 40px;
+    background: #0F4C3A;
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 700;
+    margin: 0 auto 1rem;
+  }
+  .step-card p {
+    font-size: 0.875rem;
+    color: #6b6b6b;
+    line-height: 1.55;
+  }
+
+  /* ── Fee Callout ── */
+  .fee-callout {
+    background: #fefcf3;
+    border: 1px solid #e8dfc0;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2rem;
+    display: flex; align-items: flex-start; gap: 0.85rem;
+  }
+  .fee-icon { color: #B08A3F; flex-shrink: 0; margin-top: 2px; }
+  .fee-callout p {
+    font-size: 0.9rem;
+    color: #1C1C1C;
+    line-height: 1.6;
+  }
+
+  /* ── Info Cards ── */
+  .info-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: 640px) {
+    .info-row { grid-template-columns: 1fr 1fr; }
+  }
+  .info-card {
+    background: #fff;
+    border: 1px solid #e5e1da;
+    border-radius: 12px;
+    padding: 1.75rem 1.5rem;
+  }
+  .info-card h3 {
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .info-icon { color: #0F4C3A; flex-shrink: 0; }
+  .info-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1C1C1C;
+    margin-bottom: 0.25rem;
+  }
+  .info-text {
+    font-size: 0.9rem;
+    color: #6b6b6b;
+    line-height: 1.6;
+  }
+  .info-small {
+    font-size: 0.85rem;
+    color: #6b6b6b;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+  .info-link {
+    margin-top: 0.75rem;
+  }
+  .info-link a {
+    color: #0F4C3A;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .info-link a:hover { text-decoration: underline; }
+
+  .bring-card { margin-bottom: 2rem; }
+  .checklist {
+    font-size: 0.9rem;
+    color: #1C1C1C;
+    line-height: 2;
+    margin-top: 0.5rem;
+  }
+
+  /* ── Questions CTA ── */
+  .questions-card {
+    background: #0F4C3A;
+    color: #fff;
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .questions-sub {
+    opacity: 0.82;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+    margin-left: auto; margin-right: auto;
+  }
+  .contact-links {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 1rem;
+  }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: rgba(255,255,255,0.12);
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.2); }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .download-card { padding: 2rem 1.5rem; }
+  }
+</style>

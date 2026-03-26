@@ -234,7 +234,10 @@ import plans from "../data/floorPlans.json";
       });
     });
 
-    overlay.addEventListener("click", closeModal);
+    // Close when clicking outside the white modal box
+    document.querySelector('[role="dialog"]').parentElement.addEventListener("click", function(e) {
+      if (e.target === this) closeModal();
+    });
     closeBtn.addEventListener("click", closeModal);
 
     document.addEventListener("keydown", (e) => {

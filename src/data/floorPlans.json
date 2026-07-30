@@ -25,7 +25,7 @@
     "beds": 1,
     "baths": 1,
     "sqft": 590,
-    "price": "$1,395",
+    "price": "$1,495",
     "image": "/images/corner.png",
     "features": ["Corner layout", "Great natural light", "Washer/Dryer Included", "Modern finishes"]
   },
@@ -35,7 +35,7 @@
     "beds": 2,
     "baths": 2,
     "sqft": 1090,
-    "price": "$2,100",
+    "price": "$2,195",
     "image": "/images/2b:2b.png",
     "features": ["Two full bathrooms", "Spacious living/dining", "Washer/Dryer Included", "Great storage"]
   }
